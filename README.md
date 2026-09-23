@@ -1,6 +1,6 @@
 # 青古堂 / Seikoudou
 
-A four-language gallery website for Korean ancient pottery. React, TypeScript and Tailwind; Next.js App Router conventions, with Vinext providing the Cloudflare Workers hosting build.
+A four-language gallery website for Korean ceramics and Chinese antiquities. React, TypeScript and Tailwind; Next.js App Router conventions, with Vinext providing the Cloudflare Workers hosting build.
 
 **Website:** https://seikoudou-gallery.jkim02493.chatgpt.site  
 **GitHub:** https://github.com/jkim02493-code/-
@@ -62,10 +62,13 @@ API tests cover validation, origins, size limits, missing configuration, Notion 
 
 ## Reference photography
 
-The initial three works are public-domain museum references, **not gallery inventory**. Each detail dialog links to its collection record. Replace them with authorized inventory photographs and verified descriptions before a public commercial launch.
+The initial six works are public-domain museum references, **not gallery inventory**. Each detail dialog links to its collection record. Replace them with authorized inventory photographs and verified descriptions before a public commercial launch.
 
 Images: The Metropolitan Museum of Art, Public Domain under Open Access.
 
 - [Celadon maebyeong, 27.119.11](https://www.metmuseum.org/art/collection/search/39590)
 - [Buncheong bottle, 2021.126](https://www.metmuseum.org/art/collection/search/851660)
 - [Moon jar, 1979.413.1](https://www.metmuseum.org/art/collection/search/45432)
+- [Tang sancai horse, 1991.253.12](https://www.metmuseum.org/art/collection/search/42189)
+- [Song Longquan bowl, 34.113.10](https://www.metmuseum.org/art/collection/search/51047)
+- [Ming blue-and-white vase, 50.221.47](https://www.metmuseum.org/art/collection/search/50027)
