@@ -60,12 +60,8 @@ export function CollectionGrid({ filter, setFilter, onSelect }: {
           <div className="collection-rule"><span>{String(pieces.length).padStart(2, "0")} {pieces.length === 1 ? t.workSingular : t.workPlural}</span><span>{t.cultures[culture]}</span></div>
           <div className="art-grid">{pieces.map((item, index) => {
             const text = item.translations[locale];
-            return <article key={item.id} className="art-card" style={{ transitionDelay: `${index * 70}ms` }}>
-              <button className="art-image" onClick={() => onSelect(item)} aria-label={`${t.viewWork}: ${text.title}`} onPointerMove={event => {
-                const box = event.currentTarget.getBoundingClientRect();
-                event.currentTarget.style.setProperty("--focus-x", `${((event.clientX - box.left) / box.width) * 100}%`);
-                event.currentTarget.style.setProperty("--focus-y", `${((event.clientY - box.top) / box.height) * 100}%`);
-              }}>
+            return <article key={item.id} className="art-card">
+              <button className="art-image" onClick={() => onSelect(item)} aria-label={`${t.viewWork}: ${text.title}`}>
                 <span className="art-number">{String(index + 1).padStart(2, "0")}</span>
                 <img src={item.image} alt={text.alt} width="1000" height="1200" loading="lazy" />
                 <span className="view-art">{t.viewWork}<ArrowUpRight size={17} /></span>

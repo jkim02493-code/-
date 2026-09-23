@@ -8,7 +8,6 @@ import { CollectionGrid } from "./collection-grid";
 import { ArtworkDialog } from "./artwork-dialog";
 import { InquiryForm, type InquiryDraft } from "./inquiry-form";
 import { Footer } from "./footer";
-import { ScrollReveal } from "./scroll-reveal";
 export function GalleryPage() {
   const [filter, setFilter] = useState<CollectionFilter>("all");
   const [selected, setSelected] = useState<Artwork | null>(null);
@@ -21,9 +20,8 @@ export function GalleryPage() {
     }, 150);
   }
   return <LanguageProvider>
-    <ScrollReveal />
     <Header />
-    <main><Hero onSelect={setSelected} /><CollectionGrid filter={filter} setFilter={setFilter} onSelect={setSelected} /><InquiryForm draft={draft} setDraft={setDraft} /></main>
+    <main><Hero /><CollectionGrid filter={filter} setFilter={setFilter} onSelect={setSelected} /><InquiryForm draft={draft} setDraft={setDraft} /></main>
     <Footer />
     <ArtworkDialog selected={selected} onClose={() => setSelected(null)} onInquire={inquire} />
   </LanguageProvider>;
