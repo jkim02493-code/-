@@ -67,7 +67,7 @@ export function CollectionGrid({ filter, setFilter, onSelect }: {
                 <span className="view-art">{t.viewWork}<ArrowUpRight size={17} /></span>
               </button>
               <div className="art-meta"><span>{text.period}</span><span>{t.categories[item.category]}</span></div>
-              <button className="art-title" onClick={() => onSelect(item)}><h3>{text.title}</h3><ArrowUpRight size={20} /></button>
+              <button className="art-title" onClick={() => onSelect(item)}><h3>{text.title}</h3><span className="art-title-arrow" aria-hidden="true"><ArrowUpRight size={20} /></span></button>
               <p className="dimensions">{text.dimensions}</p><p className="art-description">{text.description}</p>
             </article>;
           })}</div>

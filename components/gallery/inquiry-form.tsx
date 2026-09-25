@@ -31,9 +31,9 @@ export function InquiryForm({ draft, setDraft }: { draft: InquiryDraft; setDraft
       <div className="inquiry-copy"><p className="eyebrow">{t.inquiryEyebrow}</p><h2>{t.inquiryLines[0]}<br />{t.inquiryLines[1]}<br /><em>{t.inquiryLines[2]}</em></h2><p>{t.inquiryDescription}</p><div className="inquiry-signature" lang="ja">青古堂</div></div>
       <form ref={formRef} onSubmit={submit} className="inquiry-form">
         <div className="form-top"><h3>{t.formTitle}</h3><span lang="ja">青古堂</span></div>
-        <label htmlFor="fullName">{t.fullName}</label><input id="fullName" name="fullName" autoComplete="name" required maxLength={120} placeholder={t.namePlaceholder} disabled={status === "sending"} />
-        <label htmlFor="email">{t.email}</label><input id="email" name="email" type="email" autoComplete="email" required maxLength={254} placeholder="you@example.com" disabled={status === "sending"} />
-        <label htmlFor="details">{t.details}</label><textarea id="details" name="details" required minLength={10} maxLength={6000} rows={4} value={details} onChange={event => { setDraft({ kind: "custom", text: event.target.value }); if (status !== "sending") setStatus("idle"); }} placeholder={t.detailsPlaceholder} disabled={status === "sending"} />
+        <label htmlFor="fullName">{t.fullName}</label><input id="fullName" name="fullName" autoComplete="name" required maxLength={120} disabled={status === "sending"} />
+        <label htmlFor="email">{t.email}</label><input id="email" name="email" type="email" autoComplete="email" required maxLength={254} disabled={status === "sending"} />
+        <label htmlFor="details">{t.details}</label><textarea id="details" name="details" required minLength={10} maxLength={6000} rows={4} value={details} onChange={event => { setDraft({ kind: "custom", text: event.target.value }); if (status !== "sending") setStatus("idle"); }} disabled={status === "sending"} />
         <div className="honeypot" aria-hidden="true"><label htmlFor="website">{t.website}</label><input id="website" name="website" tabIndex={-1} autoComplete="off" /></div>
         <p className="form-privacy">{t.privacy}</p>
         <button className="send-button" type="submit" disabled={status === "sending"}>{status === "sending" ? t.sending : t.send}<ArrowUpRight size={19} /></button>
