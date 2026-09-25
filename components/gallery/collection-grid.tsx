@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 import { flushSync } from "react-dom";
-import { ArrowDown, ArrowUpRight } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { artworks, type Artwork, type CollectionFilter, type Culture } from "@/data/artworks";
 import { useLanguage } from "@/i18n/language-provider";
 
@@ -38,16 +38,17 @@ export function CollectionGrid({ filter, setFilter, onSelect }: {
 
   const visibleCultures: Culture[] = filter === "all" ? ["korea", "china"] : [filter];
 
-  return <div className="collections">
-    <div className="collection-switcher wrap" aria-label={t.filterLabel}>
-      <p>{t.collectionIndex}</p>
-      <div className="culture-filters" role="group">
-        {filters.map(value => <button key={value} aria-pressed={filter === value} onClick={() => setFilter(value)}>
-          <span>{t.cultures[value]}</span><small>{value === "all" ? "06" : "03"}</small>
-        </button>)}
+  return <div className="collections" id="collection-index">
+    <nav className="collection-nav" aria-label={t.filterLabel}>
+      <div className="collection-switcher wrap">
+        <p>{t.collectionIndex}</p>
+        <div className="culture-filters" role="group" aria-label={t.filterLabel}>
+          {filters.map(value => <button key={value} type="button" aria-pressed={filter === value} onClick={() => setFilter(value)}>
+            <span>{t.cultures[value]}</span>
+          </button>)}
+        </div>
       </div>
-      <ArrowDown size={18} aria-hidden="true" />
-    </div>
+    </nav>
     {visibleCultures.map(culture => {
       const pieces = artworks.filter(item => item.culture === culture);
       const isChina = culture === "china";
@@ -66,9 +67,16 @@ export function CollectionGrid({ filter, setFilter, onSelect }: {
                 <img src={item.image} alt={text.alt} width="1000" height="1200" loading="lazy" />
                 <span className="view-art">{t.viewWork}<ArrowUpRight size={17} /></span>
               </button>
-              <div className="art-meta"><span>{text.period}</span><span>{t.categories[item.category]}</span></div>
-              <button className="art-title" onClick={() => onSelect(item)}><h3>{text.title}</h3><span className="art-title-arrow" aria-hidden="true"><ArrowUpRight size={20} /></span></button>
-              <p className="dimensions">{text.dimensions}</p><p className="art-description">{text.description}</p>
+              <div className="art-card-copy">
+                <p className="art-category">{t.categories[item.category]} <span aria-hidden="true">/</span> {item.id}</p>
+                <h3 className="art-heading"><button className="art-title" onClick={() => onSelect(item)}><span className="art-title-text">{text.title}</span><span className="art-title-arrow" aria-hidden="true"><ArrowUpRight size={20} /></span></button></h3>
+                <p className="art-description">{text.description}</p>
+                <dl className="art-facts">
+                  <div><dt>{t.period}</dt><dd>{text.period}</dd></div>
+                  <div><dt>{t.material}</dt><dd>{text.material}</dd></div>
+                  <div><dt>{t.dimensions}</dt><dd>{text.dimensions}</dd></div>
+                </dl>
+              </div>
             </article>;
           })}</div>
           <p className="reference-note">{t.referenceNote}</p>

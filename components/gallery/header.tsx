@@ -3,16 +3,16 @@ import { ArrowUpRight, Languages } from "lucide-react";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { isLocale, languages } from "@/i18n/config";
 import { useLanguage } from "@/i18n/language-provider";
-export function Header() {
+export function Header({ showCulture }: { showCulture: (culture: "korea" | "china") => void }) {
   const { locale, t, setLocale } = useLanguage();
   return <>
-    <a className="skip-link" href="#collection">{t.skip}</a>
+    <a className="skip-link" href="#collection-index">{t.skip}</a>
     <header className="site-header wrap">
       <a href="#" className="brand" aria-label={t.home}><span lang="ja">青古堂</span><small>SEIKOUDOU</small></a>
       <div className="header-controls">
         <nav aria-label={t.navigation}>
-          <a href="#collection">{t.collection}</a>
-          <a href="#chinese-collection">{t.chineseCollection}</a>
+          <a href="#collection" onClick={event => { event.preventDefault(); showCulture("korea"); }}>{t.collection}</a>
+          <a href="#chinese-collection" onClick={event => { event.preventDefault(); showCulture("china"); }}>{t.chineseCollection}</a>
           <a href="#inquire">{t.inquire}</a>
           <a href="#contact">{t.contact} <ArrowUpRight size={14} /></a>
         </nav>

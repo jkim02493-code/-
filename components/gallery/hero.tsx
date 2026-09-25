@@ -13,7 +13,7 @@ export function Hero() {
         <p className="eyebrow"><span className="small-rule" />{t.pottery}</p>
         <h1 id="hero-heading">{t.heroLines[0]}<br />{t.heroLines[1]}<br /><em>{t.heroLines[2]}</em></h1>
         <p className="hero-description">{t.heroDescription}</p>
-        <a className="text-link" href="#collection">{t.explore}<ArrowDown size={17} /></a>
+        <a className="text-link" href="#collection-index">{t.explore}<ArrowDown size={17} /></a>
         <div className="hero-location"><strong>青古堂</strong><span>{t.location}</span><i className="vermillion-seal" aria-hidden="true">青<br />古</i></div>
       </div>
       <figure className="hero-art">
